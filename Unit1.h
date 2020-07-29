@@ -15,8 +15,10 @@ class TForm1 : public TForm
 __published:	// IDE-managed Components
         TShape *background;
         TImage *ball;
-        TTimer *Timer1;
-        void __fastcall Timer1Timer(TObject *Sender);
+        TTimer *Timer_ball;
+        TImage *left_bat;
+        TImage *right_bat;
+        void __fastcall Timer_ballTimer(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

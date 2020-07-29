@@ -1,0 +1,8 @@
+Project*.res
+Project*.tds
+Unit*.~cpp
+Unit*.~dfm
+Unit*.dfm
+Unit*.~h
+Project*.obj
+Unit*.obj

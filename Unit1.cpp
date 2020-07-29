@@ -19,7 +19,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Timer1Timer(TObject *Sender)
+void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
 {
    ball->Left+=x;
   ball->Top+=y;
@@ -27,9 +27,22 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
  //bounce from the top wall
  if (ball->Top-5 <= background->Top) y =-y;
 
-   //bounce from the bottom wall
+ //bounce from the bottom wall
  if (ball->Top+ball->Height+5 >= background->Height) y =-y;
 
+ //losing the point
+
+
+  //bounce from the left wall
+
+ if ((ball->Left-5 <= background->Left)||
+    (ball->Left+ball->Width+5 >= background->Width))
+    {
+     Timer_ball->Enabled = false;
+     ball->Visible = false;
+    // Button1->Caption= "Pora¿ka! Jeszcze raz?";
+     //Button1->Visible = true;
+  }
 }
 //---------------------------------------------------------------------------
 

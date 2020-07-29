@@ -15,7 +15,13 @@ int y=-5;
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
 {
-  ball->Left+=x;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Timer1Timer(TObject *Sender)
+{
+   ball->Left+=x;
   ball->Top+=y;
 
  //bounce from the top wall

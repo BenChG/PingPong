@@ -31,20 +31,32 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
  //bounce from the bottom wall
  if (ball->Top+ball->Height+5 >= background->Height) y =-y;
 
- //losing the point
+ //losing the point by left bat
 
- if ((ball->Left >= ball->Left+ball->Width+15))
- //||   (ball->Left+ball->Width+5 >= background->Width))
+ if (ball->Left+ball ->Width <= left_bat->Left)
     {
      Timer_ball->Enabled = false;
      ball->Visible = false;
-    // Button1->Caption= "Pora¿ka! Jeszcze raz?";
-     //Button1->Visible = true;
     }
+    else if
+    ((ball->Top > left_bat->Top-ball->Height/2) &&
+   (ball->Top < left_bat -> Top+left_bat->Height) &&
+   (ball->Left < left_bat ->Left + left_bat -> Width))
+   {
+    if (x<0) x=-x;
+   }
 
-  if ((ball->Top < left_bat->Top-ball->Height/2) &&
-   (ball->Top > left_bat -> Top+left_bat->Height))
-  // &&(ball->Left+ball->Width > left_bat ->Left))
+    //losing the point by right bat
+
+ if (ball->Left-ball->Width >= right_bat->Left+right_bat->Width)
+    {
+     Timer_ball->Enabled = false;
+     ball->Visible = false;
+    }
+    else if
+    ((ball->Top > right_bat->Top-ball->Height/2) &&
+   (ball->Top < right_bat -> Top+right_bat->Height) &&
+   (ball->Left + ball ->Width > right_bat ->Left))
    {
       x=-x;
    }

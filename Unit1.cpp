@@ -11,6 +11,10 @@
 TForm1 *Form1;
 int x=-5;
 int y=-5;
+int points_left = 0;
+int points_right = 0;
+AnsiString points_L;
+AnsiString points_R;
 
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -37,6 +41,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
     {
      Timer_ball->Enabled = false;
      ball->Visible = false;
+     points_right++;
     }
     else if
     ((ball->Top > left_bat->Top-ball->Height/2) &&
@@ -52,15 +57,42 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
     {
      Timer_ball->Enabled = false;
      ball->Visible = false;
+     points_left++;
     }
     else if
     ((ball->Top > right_bat->Top-ball->Height/2) &&
    (ball->Top < right_bat -> Top+right_bat->Height) &&
    (ball->Left + ball ->Width > right_bat ->Left))
    {
-      x=-x;
+      if (x>0) x=-x;
    }
+       points_L = IntToStr(points_left);
+       points_R = IntToStr(points_right);
+
+
+    if (points_left == 1)
+   {
+    Button1->Caption= "Game over! LEFT wins! ";
+    Label1->Caption = points_L + ":" + points_R;
+    Button1->Visible = true;
+    Label1->Visible = true;
+    Button1->Enabled = true;
+   }
+
+   if (points_right == 1)
+   {
+    Button1->Caption= "Game over! RIGHT wins! ";
+    Label1->Caption = points_L + ":" + points_R;
+    Button1->Visible = true;
+    Label1->Visible = true;
+    Button1->Enabled = true;
+   }
+
+
+
+
 }
+
 //---------------------------------------------------------------------------
 
 
@@ -110,8 +142,18 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
 //---------------------------------------------------------------------------
 
 
-
-
-
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+ ball->Left = 429;
+ ball->Top = 186;
+ ball->Visible = true;
+ x = -5, y = -5;
+ points_left = 0;
+ points_right = 0;
+ Timer_ball->Enabled = true;
+ Button1->Visible = false;
+ Label1->Visible = false;
+}
+//---------------------------------------------------------------------------
 
 

@@ -22,6 +22,8 @@ __published:	// IDE-managed Components
         TTimer *timer_left_bat_down;
         TTimer *timer_right_bat_up;
         TTimer *timer_right_bat_down;
+        TButton *Button1;
+        TLabel *Label1;
         void __fastcall Timer_ballTimer(TObject *Sender);
         void __fastcall timer_left_bat_upTimer(TObject *Sender);
         void __fastcall timer_left_bat_downTimer(TObject *Sender);
@@ -31,6 +33,7 @@ __published:	// IDE-managed Components
           TShiftState Shift);
         void __fastcall timer_right_bat_upTimer(TObject *Sender);
         void __fastcall timer_right_bat_downTimer(TObject *Sender);
+        void __fastcall Button1Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

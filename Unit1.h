@@ -25,6 +25,7 @@ __published:	// IDE-managed Components
         TButton *Button1;
         TLabel *Label1;
         TButton *Button2;
+        TLabel *Label2;
         void __fastcall Timer_ballTimer(TObject *Sender);
         void __fastcall timer_left_bat_upTimer(TObject *Sender);
         void __fastcall timer_left_bat_downTimer(TObject *Sender);

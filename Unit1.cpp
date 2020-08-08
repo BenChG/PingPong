@@ -42,6 +42,14 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
      Timer_ball->Enabled = false;
      ball->Visible = false;
      points_right++;
+     if (points_right < 5)
+     {
+     Button2->Caption= "Click to play another round!";
+     Label1->Caption = points_L + ":" + points_R;
+     Button2->Visible = true;
+     Label1->Visible = true;
+     Button2->Enabled = true;
+     }
     }
     else if
     ((ball->Top > left_bat->Top-ball->Height/2) &&
@@ -58,6 +66,15 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
      Timer_ball->Enabled = false;
      ball->Visible = false;
      points_left++;
+
+     if (points_left < 5)
+     {
+     Button2->Caption= "Click to play another round!";
+     Label1->Caption = points_L + ":" + points_R;
+     Button2->Visible = true;
+     Label1->Visible = true;
+     Button2->Enabled = true;
+     }
     }
     else if
     ((ball->Top > right_bat->Top-ball->Height/2) &&
@@ -70,27 +87,25 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
        points_R = IntToStr(points_right);
 
 
-    if (points_left == 1)
+    if (points_left == 5)
    {
     Button1->Caption= "Game over! LEFT wins! ";
-    Label1->Caption = points_L + ":" + points_R;
+    Label1->Caption = "Final score: " + points_L + ":" + points_R;
+    Button1->Visible = false;
     Button1->Visible = true;
     Label1->Visible = true;
     Button1->Enabled = true;
    }
 
-   if (points_right == 1)
+   if (points_right == 5)
    {
     Button1->Caption= "Game over! RIGHT wins! ";
-    Label1->Caption = points_L + ":" + points_R;
+    Label1->Caption = "Final score: " + points_L + ":" + points_R;
+    Button1->Visible = false;
     Button1->Visible = true;
     Label1->Visible = true;
     Button1->Enabled = true;
    }
-
-
-
-
 }
 
 //---------------------------------------------------------------------------
@@ -144,8 +159,8 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
- ball->Left = 429;
- ball->Top = 186;
+ ball->Left = 453;
+ ball->Top = 184;
  ball->Visible = true;
  x = -5, y = -5;
  points_left = 0;
@@ -156,4 +171,16 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+ ball->Left = 453;
+ ball->Top = 184;
+ ball->Visible = true;
+ x = -5, y = -5;
+ Timer_ball->Enabled = true;
+ Button2->Visible = false;
+ Label1->Visible = false;
+}
+//---------------------------------------------------------------------------
 

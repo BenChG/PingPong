@@ -16,6 +16,8 @@ int points_right = 0;
 AnsiString points_L;
 AnsiString points_R;
 
+
+
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -26,6 +28,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
 {
+
    ball->Left+=x;
    ball->Top+=y;
 
@@ -189,4 +192,22 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+AnsiString strWelcome = "Welcome to PingPong game :-)";
+AnsiString strCtr = "Controls in the game:";
+AnsiString strCtrLeft = "Left player - keys W and S";
+AnsiString strCtrRight = "Right player - arrows up and down";
+AnsiString strEnd = "Good Luck! may the better win...";
+
+AnsiString text = strWelcome + sLineBreak + sLineBreak + strCtr + sLineBreak +
+			strCtrLeft + sLineBreak + strCtrRight
+                       + sLineBreak + sLineBreak + strEnd;
+
+ char* t = text.c_str();
+ Application->MessageBox(t, "PingPong", MB_OK);
+
+}
+//---------------------------------------------------------------------------
 

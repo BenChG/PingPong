@@ -16,6 +16,7 @@ int points_right = 0;
 int start_new_game =0;
 AnsiString points_L;
 AnsiString points_R;
+AnsiString round = "even";
 
 
 
@@ -38,8 +39,9 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
 
    else
    {
-   ball->Left+=x;
-   ball->Top+=y;
+
+    ball->Left+=x;
+    ball->Top+=y;
 
  //bounce from the top wall
  if (ball->Top-5 <= background->Top) y =-y;
@@ -182,7 +184,6 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
  ball->Left = 453;
  ball->Top = 184;
  ball->Visible = true;
- x = -x, y = -y;
  points_left = 0;
  points_right = 0;
  Timer_ball->Enabled = true;
@@ -199,7 +200,6 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
  ball->Left = 453;
  ball->Top = 184;
  ball->Visible = true;
- x = -x, y = -y;
  Timer_ball->Enabled = true;
  Button2->Visible = false;
  Label1->Visible = false;
@@ -211,13 +211,16 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 AnsiString strWelcome = "Welcome to PingPong game :-)";
 AnsiString strCtr = "Controls in the game:";
-AnsiString strCtrLeft = "Left player - keys W and S";
-AnsiString strCtrRight = "Right player - arrows up and down";
-AnsiString strEnd = "Good Luck! may the better win...";
+AnsiString strCtrLeft = "Left player - keys W and S.";
+AnsiString strCtrRight = "Right player - arrows up and down.";
+AnsiString strAdd = "Additional information:";
+AnsiString strBall = "Ball at the begining of the round goes to pointw loser direction.";
+AnsiString strEnd = "Good Luck! may the better win!!!";
 
 AnsiString text = strWelcome + sLineBreak + sLineBreak + strCtr + sLineBreak +
 			strCtrLeft + sLineBreak + strCtrRight
-                       + sLineBreak + sLineBreak + strEnd;
+                       + sLineBreak + sLineBreak + strAdd + sLineBreak +
+                       strBall + sLineBreak + sLineBreak + strEnd;
 
  char* t = text.c_str();
  Application->MessageBox(t, "PingPong", MB_OK);

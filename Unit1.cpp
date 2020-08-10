@@ -13,6 +13,7 @@ int x=-5;
 int y=-5;
 int points_left = 0;
 int points_right = 0;
+int start_new_game =0;
 AnsiString points_L;
 AnsiString points_R;
 
@@ -28,7 +29,15 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
 {
+  if (start_new_game==0)
+   {
+    Button1->Caption= "Start new game!";
+    Button1->Visible = true;
+    Button1->Enabled = true;
+   }
 
+   else
+   {
    ball->Left+=x;
    ball->Top+=y;
 
@@ -38,8 +47,9 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
  //bounce from the bottom wall
  if (ball->Top+ball->Height+5 >= background->Height) y =-y;
 
- //losing the point by left bat
 
+
+ //losing the point by left bat
 
  if (ball->Left+ball ->Width <= left_bat->Left)
     {
@@ -68,7 +78,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
 
     //losing the point by right bat
 
- if (ball->Left-ball->Width >= right_bat->Left+right_bat->Width)
+ else if (ball->Left-ball->Width >= right_bat->Left+right_bat->Width)
     {
      Timer_ball->Enabled = false;
      ball->Visible = false;
@@ -112,6 +122,7 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
     Label1->Visible = true;
     Label2->Visible = true;
     Button1->Enabled = true;
+   }
    }
 }
 
@@ -176,6 +187,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
  Button1->Visible = false;
  Label1->Visible = false;
  Label2->Visible = false;
+  start_new_game++;
 }
 //---------------------------------------------------------------------------
 

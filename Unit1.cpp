@@ -71,7 +71,8 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
     else if
     ((ball->Top > left_bat->Top-ball->Height/2) &&
    (ball->Top < left_bat -> Top+left_bat->Height) &&
-   (ball->Left < left_bat ->Left + left_bat -> Width))
+   (ball->Left < left_bat ->Left + left_bat -> Width) &&
+   (ball->Left > left_bat ->Left + left_bat -> Width - 5))
    {
     if (x<0) x=-x;
    }
@@ -98,7 +99,8 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
     else if
     ((ball->Top > right_bat->Top-ball->Height/2) &&
    (ball->Top < right_bat -> Top+right_bat->Height) &&
-   (ball->Left + ball ->Width > right_bat ->Left))
+   (ball->Left + ball ->Width > right_bat ->Left)&&
+   (ball->Left + ball ->Width < right_bat ->Left + 5))
    {
       if (x>0) x=-x;
    }

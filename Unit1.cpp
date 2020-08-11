@@ -228,3 +228,5 @@ AnsiString text = strWelcome + sLineBreak + sLineBreak + strCtr + sLineBreak +
 }
 //---------------------------------------------------------------------------
 
+
+

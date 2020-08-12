@@ -67,7 +67,9 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
      Label1->Caption = points_L + ":" + points_R;
      Button2->Visible = true;
      Label1->Visible = true;
+     Button3->Visible = true;
      Button2->Enabled = true;
+     Button3->Enabled = true;
      }
     }
     else if
@@ -94,8 +96,10 @@ void __fastcall TForm1::Timer_ballTimer(TObject *Sender)
      Button2->Caption= "Play another round!";
      Label1->Caption = points_L + ":" + points_R;
      Button2->Visible = true;
+     Button3->Visible = true;
      Label1->Visible = true;
      Button2->Enabled = true;
+     Button3->Enabled = true;
      }
     }
     else if
@@ -178,6 +182,17 @@ void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
  }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+ ball->Left = 453;
+ ball->Top = 184;
+ ball->Visible = true;
+ Timer_ball->Enabled = true;
+ Button2->Visible = false;
+ Label1->Visible = false;
+ Button3->Visible = false;
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
@@ -190,23 +205,8 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
  Button1->Visible = false;
  Label1->Visible = false;
  Label2->Visible = false;
-  start_new_game++;
+ start_new_game++;
 }
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::Button2Click(TObject *Sender)
-{
- ball->Left = 453;
- ball->Top = 184;
- ball->Visible = true;
- Timer_ball->Enabled = true;
- Button2->Visible = false;
- Label1->Visible = false;
-}
-//---------------------------------------------------------------------------
-
-
 void __fastcall TForm1::FormCreate(TObject *Sender)
 {
 AnsiString strWelcome = "Welcome to PingPong game :-)";
@@ -228,5 +228,25 @@ AnsiString text = strWelcome + sLineBreak + sLineBreak + strCtr + sLineBreak +
 }
 //---------------------------------------------------------------------------
 
+
+
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+  if(Application->MessageBox("Do you really want to start new game?", "NewGame",
+ MB_YESNOCANCEL | MB_ICONQUESTION) == IDYES)
+ {
+ ball->Left = 453;
+ ball->Top = 184;
+ ball->Visible = true;
+ points_left = 0;
+ points_right = 0;
+ Timer_ball->Enabled = true;
+ Button2->Visible = false;
+ Button3->Visible = false;
+ Label1->Visible = false;
+ Label2->Visible = false;
+ start_new_game++;
+ }
+}
 
 
